@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shard Network</title>
+    <link rel="icon" href="https://www.bing.com/images/blob?bcid=Tmp2ymU9V5EGqxcxoNWLuD9SqbotqVTdP0c">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            color: #495057;
+            text-align: center;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #495057;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #6c757d;
+        }
+
+        nav a.active {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 50px;
+        }
+
+        h2 {
+            color: #343a40;
+        }
+
+        p {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        #typing-illusion {
+            font-size: 1.5em;
+            border-right: 2px solid #343a40;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(40, end) 2s, blink-caret 0.5s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #343a40;
+            }
+        }
+        
+        /* Add these styles for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #343a40;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    opacity: 0;
+    animation: scaleIn 0.5s ease-in-out forwards;
+    border-radius: 10px;
+}
+
+.modal-content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #343a40;
+}
+
+/* Add this style to overlay background when the modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
+    }
+}
+
+    </style>
+<link rel="stylesheet" href="styles.css"/>
+    
+</head>
+<body>
+
+    <header>
+        <h1>Shard Network</h1>
+    </header>
+
+    <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="Games.html">Games</a>
+        <a href="page1.html">Websites</a>
+        <a href="#contact">Chat</a>
+    </nav>
+
+    <section>
+        <h2>Welcome to Shard Network</h2>
+        <p>This is a place to play games, and chat with friends!</p>
+        <div id="typing-illusion"></div>
+    </section>
+    
+    
+    <div id="announcementModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Announcements/Updates</h2>
+        <p><strong>UPDATES</strong>: New Games Added... FNAF 1, Snow Rider 3D, and Basketball Stars.</p>
+        <!-- Add your announcement content here -->
+    </div>
+    
+    <script>
+        var text = "Welcome to Shard Network Offical";
+        var index = 0;
+        var typingDiv = document.getElementById('typing-illusion');
+
+        function type() {
+            if (index < text.length) {
+                typingDiv.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 100); // Adjust the typing speed here
+            } else {
+                setTimeout(erase, 2000); // Wait for 2 seconds before starting the erasing
+            }
+        }
+        function erase() {
+            if (index >= 0) {
+                typingDiv.innerHTML = text.substring(0, index);
+                index--;
+                setTimeout(erase, 50); // Adjust the erasing speed here
+            } else {
+                setTimeout(type, 1000); // Wait for 1 second before starting typing again
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            type();
+        });
+        function showModal() {
+        document.getElementById('announcementModal').style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('announcementModal').style.display = 'none';
+    }
+
+    // Show the modal when the page loads (you can customize the conditions for showing it)
+    document.addEventListener("DOMContentLoaded", function () {
+        // Check if the user has chosen to show the announcement (you can replace this with your own logic)
+        var showAnnouncement = true; // Set to true or false based on your logic
+
+        if (showAnnouncement) {
+            showModal();
+        }
+    });
+    
+    document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+});
+    
+    
+    </script>
+
+
+    <script src="sign.js"></script>
+</body>
+</html>
