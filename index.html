@@ -11,10 +11,11 @@
             font-family: Arial, sans-serif;
             background-color: #222;
             color: #fff;
+            overflow: hidden; /* Hide overflow to prevent scrollbars due to animation */
         }
         nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             background-color: #111;
             padding: 20px;
@@ -22,13 +23,6 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-        }
-        nav h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
         nav ul {
             list-style: none;
@@ -39,14 +33,35 @@
         nav ul li {
             margin-right: 20px;
         }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
         nav ul li a {
             text-decoration: none;
-            color: #fff;
+            color: #ccc;
             font-size: 16px;
-            transition: all 0.3s ease;
+            position: relative;
+            transition: color 0.3s ease;
         }
         nav ul li a:hover {
-            color: #f0f;
+            color: #ccc;
+        }
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: transparent;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        nav ul li a:hover::before {
+            visibility: visible;
+            background-color: #0f0;
+            transform: scaleX(1);
         }
         .content {
             margin-top: 80px;
@@ -60,21 +75,97 @@
         .content p {
             font-size: 18px;
         }
+        .bubbles-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -100px; /* Initial position below the viewport */
+            width: 20px;
+            height: 20px;
+            background-color: rgba(36, 119, 18, 0.891);
+            border-radius: 50%;
+            animation: bubbleRise 10s linear infinite;
+        }
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px); /* Final position above the viewport */
+                opacity: 0;
+            }
+        }
+        .background-gradient {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 200px; /* Adjust the height of the gradient */
+            background: linear-gradient(to top, rgba(34, 34, 34, 0.9), transparent);
+            z-index: -1;
+            animation: fadeUp 10s linear infinite;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <h1>Shard Network</h1>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Games</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Games.html">Games</a></li>
             <li><a href="#">Proxy</a></li>
             <li><a href="#">Chat</a></li>
         </ul>
     </nav>
     <div class="content">
         <h2>Welcome to Shard Network</h2>
-        <p>This is a dark-themed website designed with elegance and sophistication.</p>
+        <p>A place to play games and chat with friends, have fun!</p>
     </div>
+    <div class="bubbles-container">
+        <!-- Generating bubbles dynamically using JavaScript -->
+    </div>
+    <div class="background-gradient"></div>
+
+    <!-- JavaScript to dynamically generate bubbles -->
+    <script>
+        // Number of bubbles to generate
+        const numberOfBubbles = 30;
+        // Get the bubbles container
+        const bubblesContainer = document.querySelector('.bubbles-container');
+
+        // Function to generate bubbles
+        function generateBubbles() {
+            for (let i = 0; i < numberOfBubbles; i++) {
+                // Create a new bubble element
+                const bubble = document.createElement('div');
+                // Add the 'bubble' class to the bubble element
+                bubble.classList.add('bubble');
+                // Randomly set the left position of the bubble
+                bubble.style.left = Math.random() * 100 + '%';
+                // Randomly set the animation delay for each bubble
+                bubble.style.animationDelay = Math.random() * 10 + 's';
+                // Append the bubble to the bubbles container
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+
+        // Call the generateBubbles function when the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', generateBubbles);
+    </script>
 </body>
 </html>

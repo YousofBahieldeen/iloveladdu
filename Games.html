@@ -3,9 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shard Network - Games</title>
+    <title>Shard Network</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 16px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ccc;
+        }
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: transparent;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        nav ul li a:hover::before {
+            visibility: visible;
+            background-color: #0f0;
+            transform: scaleX(1);
+        }
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 18px;
+        }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .game {
+            text-align: center;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: calc(33.33% - 20px); /* Three games per row */
+            max-width: 300px;
+            transition: transform 0.3s ease;
+        }
+        .game:hover {
+            transform: translateY(-10px);
+        }
+        .game h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .play-button {
+            background-color: #0f0;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .play-button:hover {
+            background-color: #0a0;
+        }
+        .bubbles-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -100px; /* Initial position below the viewport */
+            width: 20px;
+            height: 20px;
+            background-color: rgba(36, 119, 18, 0.891);
+            border-radius: 50%;
+            animation: bubbleRise 10s linear infinite;
+        }
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px); /* Final position above the viewport */
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="#">Proxy</a></li>
+            <li><a href="#">Chat</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h2>Welcome to Shard Network</h2>
+        <p>This is a dark-themed website designed with elegance and sophistication.</p>
+        <div class="game-container">
+            <div class="game">
+                <h3>Featured Game 1</h3>
+                <!-- Your game content goes here -->
+                <p>This is where the game will be displayed.</p>
+                <button class="play-button">Play Now</button>
+            </div>
+            <div class="game">
+                <h3>Game 2</h3>
+                <!-- Your game content goes here -->
+                <p>This is another game description.</p>
+                <button class="play-button">Play Now</button>
+            </div>
+            <div class="game">
+                <h3>Game 3</h3>
+                <!-- Your game content goes here -->
+                <p>This is another game description.</p>
+                <button class="play-button">Play Now</button>
+            </div>
+            <!-- Add more game divs as needed -->
+        </div>
+    </div>
+    <div class="bubbles-container">
+        <!-- Generating bubbles dynamically using JavaScript -->
+    </div>
+
+    <!-- JavaScript to dynamically generate bubbles -->
+    <script>
+        // Number of bubbles to generate
+        const numberOfBubbles = 50;
+        // Get the bubbles container
+        const bubblesContainer = document.querySelector('.bubbles-container');
+
+        // Function to generate bubbles
+        function generateBubbles() {
+            for (let i = 0; i < numberOfBubbles; i++) {
+                // Create a new bubble element
+                const bubble = document.createElement('div');
+                // Add the 'bubble' class to the bubble element
+                bubble.classList.add('bubble');
+                // Randomly set the left position of the bubble
+                bubble.style.left = Math.random() * 100 + '%';
+                // Randomly set the animation delay for each bubble
+                bubble.style.animationDelay = Math.random() * 10 + 's';
+                // Append the bubble to the bubbles container
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+
+        // Call the generateBubbles function when the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', generateBubbles);
+    </script>
 </body>
 </html>
