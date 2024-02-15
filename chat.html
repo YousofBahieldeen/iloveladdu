@@ -121,6 +121,7 @@
                 transform: translateY(0);
             }
         }
+        .discordIframe iframe {width:100vw;height:100vh;border:none;}
     </style>
 </head>
 <body>
@@ -132,40 +133,11 @@
             <li><a href="chat.html">Chat</a></li>
         </ul>
     </nav>
-    <div class="content">
-        <h2>Welcome to Shard Network</h2>
-        <p>A place to play games and chat with friends, have fun!</p>
+    <div class="discordIframe">
+        <iframe src="https://math.ajatar.org/shuttle-uv/hvtrs8%2F-dksaopd%2Ccmm-arp" frameborder="0"></iframe>
     </div>
-    <div class="bubbles-container">
-        <!-- Generating bubbles dynamically using JavaScript -->
-    </div>
-    <div class="background-gradient"></div>
 
     <!-- JavaScript to dynamically generate bubbles -->
-    <script>
-        // Number of bubbles to generate
-        const numberOfBubbles = 30;
-        // Get the bubbles container
-        const bubblesContainer = document.querySelector('.bubbles-container');
 
-        // Function to generate bubbles
-        function generateBubbles() {
-            for (let i = 0; i < numberOfBubbles; i++) {
-                // Create a new bubble element
-                const bubble = document.createElement('div');
-                // Add the 'bubble' class to the bubble element
-                bubble.classList.add('bubble');
-                // Randomly set the left position of the bubble
-                bubble.style.left = Math.random() * 100 + '%';
-                // Randomly set the animation delay for each bubble
-                bubble.style.animationDelay = Math.random() * 10 + 's';
-                // Append the bubble to the bubbles container
-                bubblesContainer.appendChild(bubble);
-            }
-        }
-
-        // Call the generateBubbles function when the DOM content is loaded
-        document.addEventListener('DOMContentLoaded', generateBubbles);
-    </script>
 </body>
 </html>
