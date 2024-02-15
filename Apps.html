@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             background-color: #222;
             color: #fff;
-            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow: hidden; /* Hide overflow to prevent scrollbars due to animation */
         }
         nav {
             display: flex;
@@ -75,46 +75,6 @@
         .content p {
             font-size: 18px;
         }
-        .game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .game {
-            text-align: center;
-            background-color: rgba(51, 51, 51, 0.8);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            width: calc(33.33% - 20px); /* Three games per row */
-            max-width: 300px;
-            transition: transform 0.3s ease;
-        }
-        .game:hover {
-            transform: translateY(-10px);
-        }
-        .game h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        .play-button {
-            background-color: #0f0;
-            color: #fff;
-            font-size: 18px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .play-button:hover {
-            background-color: #0a0;
-        }
         .bubbles-container {
             position: fixed;
             bottom: 0;
@@ -142,6 +102,55 @@
                 opacity: 0;
             }
         }
+        .background-gradient {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 200px; /* Adjust the height of the gradient */
+            background: linear-gradient(to top, rgba(34, 34, 34, 0.9), transparent);
+            z-index: -1;
+            animation: fadeUp 10s linear infinite;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .apps {
+            display: flex; justify-content: center; flex-wrap: wrap;
+        }
+        .apps .app {
+            display: inline-block;
+            text-align: center;
+            height: 115px;
+            width: 115px;
+            padding: 30px;
+            text-decoration: none;
+            text-align: center;
+            border: solid 2px transparent;
+            border-radius: 5px;
+            transition: .2s;
+            cursor: pointer;
+            justify-content: center;
+        }
+        .app img {
+            border-radius: 17px;
+            width: 103px;
+            height: 103px
+        }
+        .apps .app:hover {
+            background: rgba(255, 255, 255, 0.144);
+            color: white;
+            border: solid 2px rgba(255, 255, 255, 0.26);
+            border-radius: 5px;
+            transform: scale(1.09);
+            transition: 0.2s;
+        }
     </style>
 </head>
 <body>
@@ -154,80 +163,41 @@
         </ul>
     </nav>
     <div class="content">
-        <h2>Welcome to Shard Network</h2>
-        <p>This is a dark-themed website designed with elegance and sophistication.</p>
-        <div class="game-container">
-            <div class="game">
-                <h3>1v1.lol New Version!</h3>
-                <!-- Your game content goes here -->
-                <p>Play with another player!</p>
-                <button onclick="onevone()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Fnaf 1</h3>
-                <!-- Your game content goes here -->
-                <p>Very Scary, you will pee your self :/</p>
-                <button onclick="fnaf()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Time Shooter 3</h3>
-                <!-- Your game content goes here -->
-                <p>Save the hostages from dying!</p>
-                <button onclick="TimeShooter()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Snow Rider 3D</h3>
-                <!-- Your game content goes here -->
-                <p>Slide in the snow and collet presents!</p>
-                <button onclick="SnowRider()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Soccer Random</h3>
-                <!-- Your game content goes here -->
-                <p>Soccer but random?!</p>
-                <button onclick="SoccerRandom()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Stickman Hook</h3>
-                <!-- Your game content goes here -->
-                <p>Stick the man</p>
-                <button onclick="Stickman()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Funny Shooter</h3>
-                <!-- Your game content goes here -->
-                <p>Kill the enemies and get new weapons!</p>
-                <button onclick="FunnyShooter()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Slope</h3>
-                <!-- Your game content goes here -->
-                <p>Run it down!</p>
-                <button onclick="slope()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>OvO</h3>
-                <!-- Your game content goes here -->
-                <p>Run it down as fast as possible!</p>
-                <button onclick="OvO()" class="play-button">Play Now</button>
-            </div>
-            <div class="game">
-                <h3>Basket Random</h3>
-                <!-- Your game content goes here -->
-                <p>BasketBall but it's random!</p>
-                <button onclick="BasketRandom()" class="play-button">Play Now</button>
-            </div>
-            <!-- Add more game divs as needed -->
+        <h2>Shard Network Apps</h2>
+        <p>Still in progress, Links don't work!!</p>
+    </div>
+
+    <div class="apps">
+        <div class="app">
+            <div class="app-image"><a onclick="Youtube()"><img src="https://surfdoge.pro/assets/img/youtube.png" alt=""></a></div>
+            <p>Youtube</p>
+        </div>
+        <div class="app">
+            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/nowgg.png" alt=""></a></div>
+            <p>Now.GG</p>
+        </div>
+        <div class="app">
+            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/discord.png" alt=""></a></div>
+            <p>Discord</p>
+        </div>
+        <div class="app">
+            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/github.png" alt=""></a></div>
+            <p>Github</p>
+        </div>
+        <div class="app">
+            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/chess.png" alt=""></a></div>
+            <p>Chess.com</p>
         </div>
     </div>
     <div class="bubbles-container">
         <!-- Generating bubbles dynamically using JavaScript -->
     </div>
-    <script src="Javascript/games.js"></script>
+    <div class="background-gradient"></div>
+
     <!-- JavaScript to dynamically generate bubbles -->
     <script>
         // Number of bubbles to generate
-        const numberOfBubbles = 50;
+        const numberOfBubbles = 30;
         // Get the bubbles container
         const bubblesContainer = document.querySelector('.bubbles-container');
 
@@ -249,6 +219,12 @@
 
         // Call the generateBubbles function when the DOM content is loaded
         document.addEventListener('DOMContentLoaded', generateBubbles);
+    </script>
+    <script>
+        function Youtube() {
+            var newWindow = window.open('about:blank', '_blank');
+        newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="https://math.ajatar.org/shuttle-uv/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-%3FvhgmgRgfpeqh%3F1" frameborder="0" allowfullscreen></iframe></html>');
+        }
     </script>
 </body>
 </html>
