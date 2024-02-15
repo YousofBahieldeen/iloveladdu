@@ -42,3 +42,11 @@ function slope() {
     var newWindow = window.open('about:blank', '_blank');
     newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="https://google-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/version@843c1a10f4bf78019b513ea7a8a8c3146f3dfa59/2slope.xml" frameborder="0" allowfullscreen></iframe></html>');
 }
+function OvO() {
+    var newWindow = window.open('about:blank', '_blank');
+    newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="https://75jfh73gd9hla64g-opensocial.googleusercontent.com/gadgets/ifr?url=https://googleusercontent.b-cdn.net/ovo/ovo.xml" frameborder="0" allowfullscreen></iframe></html>');
+}
+function BasketRandom() {
+    var newWindow = window.open('about:blank', '_blank');
+    newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="https://google-opensocial.googleusercontent.com/gadgets/ifr?url=https://googleusercontent.b-cdn.net/basket-random/basran.xml" frameborder="0" allowfullscreen></iframe></html>');
+}
