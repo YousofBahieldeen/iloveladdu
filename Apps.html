@@ -152,6 +152,95 @@
             transform: scale(1.09);
             transition: 0.2s;
         }
+        #fileInput {
+			display: none;
+		}
+
+		#fileLabel {
+			padding: 20px 40px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 18px;
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+
+		#fileLabel:hover {
+			background-color: #0056b3;
+		}
+
+		#fileLabel:active {
+			background-color: #004080;
+		}
+
+		#fileLabel:before {
+			content: 'Choose HTML File';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1;
+			transition: transform 0.3s ease;
+		}
+
+		#fileLabel:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 300%;
+			height: 300%;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+			z-index: 0;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+		}
+
+		#fileInput:focus+#fileLabel:after {
+			width: 0;
+			height: 0;
+			opacity: 1;
+		}
+
+		#fileInfo {
+			color: #fff;
+			margin-bottom: 20px;
+			display: none;
+		}
+
+		#loadButton {
+			padding: 15px 30px;
+			background-color: #28a745;
+			color: #fff;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 18px;
+			transition: all 0.3s ease;
+		}
+
+		#loadButton:hover {
+			background-color: #218838;
+		}
+
+		#loadButton:active {
+			background-color: #1e7e34;
+		}
+		.use {
+			color:#fff;
+			margin-top:2%;
+		}
     </style>
 </head>
 <body>
@@ -168,28 +257,12 @@
         <p>Still in progress, Links don't work!!</p>
     </div>
 
-    <div class="apps">
-        <div class="app">
-            <div class="app-image"><a onclick="Youtube()"><img src="https://surfdoge.pro/assets/img/youtube.png" alt=""></a></div>
-            <p>Youtube</p>
-        </div>
-        <div class="app">
-            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/nowgg.png" alt=""></a></div>
-            <p>Now.GG</p>
-        </div>
-        <div class="app">
-            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/discord.png" alt=""></a></div>
-            <p>Discord</p>
-        </div>
-        <div class="app">
-            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/github.png" alt=""></a></div>
-            <p>Github</p>
-        </div>
-        <div class="app">
-            <div class="app-image"><a onclick=""><img src="https://surfdoge.pro/assets/img/chess.png" alt=""></a></div>
-            <p>Chess.com</p>
-        </div>
-    </div>
+    <input type="file" id="fileInput" accept=".html" onchange="loadFile(event)">
+	<label for="fileInput" id="fileLabel">Choose HTML File</label>
+
+	<div id="fileInfo"></div>
+	<button id="loadButton" onclick="loadContent()">Load</button>
+	<a href="howtouse.html" class="use">How to use</a>
     <div class="bubbles-container">
         <!-- Generating bubbles dynamically using JavaScript -->
     </div>
@@ -221,11 +294,6 @@
         // Call the generateBubbles function when the DOM content is loaded
         document.addEventListener('DOMContentLoaded', generateBubbles);
     </script>
-    <script>
-        function Youtube() {
-            var newWindow = window.open('about:blank', '_blank');
-        newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="https://math.ajatar.org/shuttle-uv/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-%3FvhgmgRgfpeqh%3F1" frameborder="0" allowfullscreen></iframe></html>');
-        }
-    </script>
+    <script src="Javascript/fileloader.js"></script>
 </body>
 </html>
