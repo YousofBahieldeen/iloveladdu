@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shard Network</title>
+    <link rel="icon" href="Images/tab_logo.png" type="image/x-icon"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            overflow: hidden; /* Hide overflow to prevent scrollbars due to animation */
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 16px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ccc;
+        }
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: transparent;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        nav ul li a:hover::before {
+            visibility: visible;
+            background-color: #0f0;
+            transform: scaleX(1);
+        }
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 18px;
+        }
+        .bubbles-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -100px; /* Initial position below the viewport */
+            width: 20px;
+            height: 20px;
+            background-color: rgba(36, 119, 18, 0.891);
+            border-radius: 50%;
+            animation: bubbleRise 10s linear infinite;
+        }
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px); /* Final position above the viewport */
+                opacity: 0;
+            }
+        }
+        .background-gradient {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 200px; /* Adjust the height of the gradient */
+            background: linear-gradient(to top, rgba(34, 34, 34, 0.9), transparent);
+            z-index: -1;
+            animation: fadeUp 10s linear infinite;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .apps {
+            display: flex; justify-content: center; flex-wrap: wrap;
+        }
+        .apps .app {
+            display: inline-block;
+            text-align: center;
+            height: 115px;
+            width: 115px;
+            padding: 30px;
+            text-decoration: none;
+            text-align: center;
+            border: solid 2px transparent;
+            border-radius: 5px;
+            transition: .2s;
+            cursor: pointer;
+            justify-content: center;
+        }
+        .app img {
+            border-radius: 17px;
+            width: 103px;
+            height: 103px
+        }
+        .apps .app:hover {
+            background: rgba(255, 255, 255, 0.144);
+            color: white;
+            border: solid 2px rgba(255, 255, 255, 0.26);
+            border-radius: 5px;
+            transform: scale(1.09);
+            transition: 0.2s;
+        }
+        #fileInput {
+			display: none;
+		}
+
+		#fileLabel {
+			padding: 20px 40px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 18px;
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+
+		#fileLabel:hover {
+			background-color: #0056b3;
+		}
+
+		#fileLabel:active {
+			background-color: #004080;
+		}
+
+		#fileLabel:before {
+			content: 'Choose HTML File';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1;
+			transition: transform 0.3s ease;
+		}
+
+		#fileLabel:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 300%;
+			height: 300%;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+			z-index: 0;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+		}
+
+		#fileInput:focus+#fileLabel:after {
+			width: 0;
+			height: 0;
+			opacity: 1;
+		}
+
+		#fileInfo {
+			color: #fff;
+			margin-bottom: 20px;
+			display: none;
+		}
+
+		#loadButton {
+			padding: 15px 30px;
+			background-color: #28a745;
+			color: #fff;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 18px;
+			transition: all 0.3s ease;
+		}
+
+		#loadButton:hover {
+			background-color: #218838;
+		}
+
+		#loadButton:active {
+			background-color: #1e7e34;
+		}
+		.use {
+			color:#fff;
+			margin-top:2%;
+		}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Apps.html">Apps</a></li>
+            <li><a href="proxy.html">Proxy</a></li>
+        </ul>
+    </nav>
+   
+    <div class="background-gradient"></div>
+
+    <!-- JavaScript to dynamically generate bubbles -->
+    <script>
+        // Number of bubbles to generate
+        const numberOfBubbles = 30;
+        // Get the bubbles container
+        const bubblesContainer = document.querySelector('.bubbles-container');
+
+        // Function to generate bubbles
+        function generateBubbles() {
+            for (let i = 0; i < numberOfBubbles; i++) {
+                // Create a new bubble element
+                const bubble = document.createElement('div');
+                // Add the 'bubble' class to the bubble element
+                bubble.classList.add('bubble');
+                // Randomly set the left position of the bubble
+                bubble.style.left = Math.random() * 100 + '%';
+                // Randomly set the animation delay for each bubble
+                bubble.style.animationDelay = Math.random() * 10 + 's';
+                // Append the bubble to the bubbles container
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+
+        // Call the generateBubbles function when the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', generateBubbles);
+    </script>
+</body>
+</html>
