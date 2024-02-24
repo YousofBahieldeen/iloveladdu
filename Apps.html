@@ -241,6 +241,18 @@
 			color:#fff;
 			margin-top:2%;
 		}
+        .fileloader-containter {
+            margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: #222;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -256,15 +268,16 @@
         <h2>Shard Network Apps</h2>
         <p>Still in progress, Links don't work!!</p>
     </div>
+    <div class="fileloader-containter">
+        <input type="file" id="fileInput" accept=".html" onchange="loadFile(event)">
+        <label for="fileInput" id="fileLabel">Choose HTML File</label>
 
-    <input type="file" id="fileInput" accept=".html" onchange="loadFile(event)">
-	<label for="fileInput" id="fileLabel">Choose HTML File</label>
-
-	<div id="fileInfo"></div>
-	<button id="loadButton" onclick="loadContent()">Load</button>
-	<a href="howtouse.html" class="use">How to use</a>
-    <div class="bubbles-container">
-        <!-- Generating bubbles dynamically using JavaScript -->
+        <div id="fileInfo"></div>
+        <button id="loadButton" onclick="loadContent()">Load</button>
+        <a href="howtouse.html" class="use">How to use</a>
+        <div class="bubbles-container">
+            <!-- Generating bubbles dynamically using JavaScript -->
+        </div>
     </div>
     <div class="background-gradient"></div>
 
