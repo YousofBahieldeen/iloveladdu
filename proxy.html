@@ -122,7 +122,16 @@
                 transform: translateY(0);
             }
         }
-        .discordIframe iframe {width:100vw;height:100vh;border:none;}
+        .discordIframe {margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: #222;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;}
     </style>
 </head>
 <body>
@@ -135,10 +144,34 @@
         </ul>
     </nav>
     <div class="discordIframe">
-        <iframe src="https://math.ajatar.org/shuttle-uv/hvtrs8%2F-dksaopd%2Ccmm-arp" frameborder="0"></iframe>
+        <input type="search" class="searchBox" id="searchBox" placeholder="Search or Type a URL...">
+        <button onclick="handleSearch()">Go</button>
     </div>
 
     <!-- JavaScript to dynamically generate bubbles -->
+    <script>
+        // Assuming this function is called when the user clicks the search button
+    async function handleSearch() {
+      // Get the search query from the input field
+      const searchTerm = document.getElementById('searchInput').value;
 
+      // Make a Fetch API request to your server-side proxy
+      const response = await fetch('/search-proxy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: searchTerm }),
+      });
+
+      if (response.ok) {
+        const searchData = await response.json();
+        console.log('Search results:', searchData);
+        // Handle the search results as needed
+      } else {
+        console.error('Error:', response.status, response.statusText);
+      }
+    }
+    </script>
 </body>
 </html>
