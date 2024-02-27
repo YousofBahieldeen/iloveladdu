@@ -109,4 +109,6 @@ function checkAuthentication() {
 }
 
 // Initial check on page load
-checkAuthentication();
+document.addEventListener('DOMContentLoaded', function(){
+    checkAuthentication();
+});
