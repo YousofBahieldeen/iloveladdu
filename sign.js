@@ -1,4 +1,4 @@
-let isAuthenticated = false;
+let isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
 let savedUsername = "rizza"; // Change this to your initial username
 let savedPassword = "password59"; // Change this to your initial password
 
@@ -93,7 +93,7 @@ function signIn() {
 
   // Replace this check with your authentication logic
   if (username === savedUsername && password === savedPassword) {
-    isAuthenticated = true;
+    sessionStorage.setItem("isAuthenticated", "true");
     removeSignInElements(); // Call this function after successful sign-in
   } else {
     errorMessage.innerText = "Invalid username or password. Please try again.";
