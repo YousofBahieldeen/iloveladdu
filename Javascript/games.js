@@ -32,7 +32,7 @@ function SoccerRandom() {
 }
 function Stickman() {
     var newWindow = window.open('about:blank', '_blank');
-    newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="https://stickman-hook.io/iframe/index.html" frameborder="0" allowfullscreen></iframe></html>');
+    newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="../stickman/index.html" frameborder="0" allowfullscreen></iframe></html>');
 }
 function FunnyShooter() {
     var newWindow = window.open('about:blank', '_blank');
