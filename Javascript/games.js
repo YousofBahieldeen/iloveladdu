@@ -32,7 +32,7 @@ function SoccerRandom() {
 }
 function Stickman() {
     var newWindow = window.open('about:blank', '_blank');
-    newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="../stickman/index.html" frameborder="0" allowfullscreen></iframe></html>');
+    newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="../games/stickman/index.html" frameborder="0" allowfullscreen></iframe></html>');
 }
 function FunnyShooter() {
     var newWindow = window.open('about:blank', '_blank');
@@ -50,3 +50,9 @@ function BasketRandom() {
     var newWindow = window.open('about:blank', '_blank');
     newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="https://google-opensocial.googleusercontent.com/gadgets/ifr?url=https://googleusercontent.b-cdn.net/basket-random/basran.xml" frameborder="0" allowfullscreen></iframe></html>');
 }
+
+function flappy() {
+    var newWindow = window.open('about:blank', '_blank');
+    newWindow.document.write('<!DOCTYPE html><html><style>body {margin:0;overflow:hidden;}iframe {width:100vw;height:100vh;border:none;}</style><iframe src="" frameborder="0" allowfullscreen></iframe></html>');
+}
+
