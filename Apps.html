@@ -6,10 +6,10 @@
     <title>Shard Network</title>
     <link rel="icon" href="Images/tab_logo.png" type="image/x-icon"/>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
             background-color: #222;
             color: #fff;
             overflow: hidden; /* Hide overflow to prevent scrollbars due to animation */
@@ -23,6 +23,7 @@
             position: fixed;
             width: 100%;
             top: 0;
+            font-family: Arial, sans-serif;
             z-index: 1000;
         }
         nav ul {
@@ -67,6 +68,7 @@
         .content {
             margin-top: 80px;
             padding: 20px;
+            font-family: Arial, sans-serif;
             text-align: center;
         }
         .content h2 {
@@ -124,18 +126,20 @@
         }
         .apps {
             display: flex; justify-content: center; flex-wrap: wrap;
+            margin-top: 40px;
         }
         .apps .app {
             display: inline-block;
             text-align: center;
-            height: 115px;
-            width: 115px;
+            height: 120px;
+            width: 120px;
             padding: 30px;
             text-decoration: none;
             text-align: center;
             border: solid 2px transparent;
             border-radius: 5px;
             transition: .2s;
+            font-family: 'Poppins', sans-serif;
             cursor: pointer;
             justify-content: center;
         }
@@ -157,6 +161,7 @@
 		}
 
 		#fileLabel {
+            font-family: 'Poppins', sans-serif;
 			padding: 20px 40px;
 			background-color: #007bff;
 			color: #fff;
@@ -239,8 +244,22 @@
 		}
 		.use {
 			color:#fff;
+            font-family: 'Poppins', sans-serif;
 			margin-top:2%;
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #007bff;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.6s ease;
 		}
+
+        .use:hover {
+            transform: translateY(-5px);
+            background-color: #0056b3;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
         .fileloader-containter {
             margin: 0;
 			padding: 0;
@@ -275,6 +294,9 @@
         <div id="fileInfo"></div>
         <button id="loadButton" onclick="loadContent()">Load</button>
         <a href="howtouse.html" class="use">How to use</a>
+    </div>
+    
+    </div>
         <div class="bubbles-container">
             <!-- Generating bubbles dynamically using JavaScript -->
         </div>
@@ -284,7 +306,7 @@
     <!-- JavaScript to dynamically generate bubbles -->
     <script>
         // Number of bubbles to generate
-        const numberOfBubbles = 30;
+        const numberOfBubbles = 50;
         // Get the bubbles container
         const bubblesContainer = document.querySelector('.bubbles-container');
 
