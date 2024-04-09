@@ -1,27 +1,30 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('https://shardnetwork.autos/search-proxy', async (req, res) => {
-  try {
-    const searchTerm = req.body.query;
+// Proxy endpoint to fetch and return content from a given URL
+app.post('/proxy', async (req, res) => {
+    try {
+        const { url } = req.body;
 
-    // Make a request to the Google search API
-    const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
-    const response = await axios.get(googleSearchUrl);
+        // Make a request to the specified URL
+        const response = await axios.get(url);
 
-    // Forward the Google search results to the client
-    res.send(response.data);
-  } catch (error) {
-    console.error('Error:', error.message);
-    res.status(500).send('Internal Server Error');
-  }
+        // Send the fetched content back to the client
+        res.send(response.data);
+    } catch (error) {
+        console.error('Proxy error:', error);
+        res.status(500).send('Proxy error');
+    }
 });
 
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -1,0 +1,14 @@
+{
+    "name": "shard-network-proxy",
+    "version": "1.0.0",
+    "description": "Proxy server for Shard Network",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "axios": "^0.24.0",
+      "express": "^4.17.2"
+    }
+  }
+  

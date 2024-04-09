@@ -6,6 +6,30 @@
     <title>Shard Network</title>
     <link rel="icon" href="Images/tab_logo.png" type="image/x-icon"/>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        :root {
+            --page: url('/./assets/media/background/full2.png');
+            --background: rgba(255, 255, 255, 0.02);
+            --background-filter: blur(10px) brightness(80%);
+            --background-secondary: #4545459e;
+            --background-dark: #121212;
+            --background-other: #282828;
+
+            --title: #fff;
+            --block: #2a2a2a;
+            --block-buttons: #333;
+            --input: #444;
+            --column: #353535;
+            --accent-color: #444;
+            --main: #222;
+
+            --text-primary: #fff;
+            --text-secondary: #b0b0b0;
+            --text-placeholder: #aaa;
+            --text-dark: #555;
+
+            --transparent: rgb(0, 0, 0, 0);
+        }
         body {
             margin: 0;
             padding: 0;
@@ -122,6 +146,33 @@
                 transform: translateY(0);
             }
         }
+        #search-container {
+            display: flex;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10vh;
+        }
+        
+        #searchInput {
+            width: 50vw;
+            height: 5vh;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+            background: var(--background-secondary);
+            -webkit-backdrop-filter: var(--background-filter);
+            backdrop-filter: var(--background-filter);
+            border: solid;
+            border-color: none;
+            border-width: 0;
+            border-radius: 3px;
+            padding: 8px;
+        }
+        #searchInput:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -137,11 +188,19 @@
         <h2>Welcome to Shard Network</h2>
         <p>A place to play games and chat with friends, have fun!</p>
     </div>
+
+    <div id="search-container">
+        <input type="search" placeholder="Search..." id="searchInput">
+    </div>
+    
     <div class="bubbles-container">
         <!-- Generating bubbles dynamically using JavaScript -->
     </div>
     <div class="background-gradient"></div>
 
+    <script>
+
+    </script>
     <!-- JavaScript to dynamically generate bubbles -->
     <script>
         // Number of bubbles to generate
@@ -168,6 +227,5 @@
         // Call the generateBubbles function when the DOM content is loaded
         document.addEventListener('DOMContentLoaded', generateBubbles);
     </script>
-    <script src="Javascript/sign.js"></script>
 </body>
 </html>
