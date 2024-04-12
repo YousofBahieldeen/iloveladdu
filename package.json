@@ -1,14 +1,20 @@
 {
-    "name": "shard-network-proxy",
-    "version": "1.0.0",
-    "description": "Proxy server for Shard Network",
-    "main": "server.js",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "dependencies": {
-      "axios": "^0.24.0",
-      "express": "^4.17.2"
-    }
+  "name": "shardnetwork",
+  "version": "4.4.7",
+  "description": "",
+  "type": "module",
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@tomphttp/bare-server-node": "^1.2.6",
+    "express": "^4.18.2"
   }
-  
+}
