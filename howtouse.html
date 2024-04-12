@@ -122,125 +122,23 @@
                 transform: translateY(0);
             }
         }
-        .apps {
-            display: flex; justify-content: center; flex-wrap: wrap;
+        .content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
         }
-        .apps .app {
-            display: inline-block;
-            text-align: center;
-            height: 115px;
-            width: 115px;
-            padding: 30px;
-            text-decoration: none;
-            text-align: center;
-            border: solid 2px transparent;
-            border-radius: 5px;
-            transition: .2s;
-            cursor: pointer;
-            justify-content: center;
+        .content ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.5;
         }
-        .app img {
-            border-radius: 17px;
-            width: 103px;
-            height: 103px
+        .content ul li {
+            margin-bottom: 10px;
+            text-align: left;
         }
-        .apps .app:hover {
-            background: rgba(255, 255, 255, 0.144);
-            color: white;
-            border: solid 2px rgba(255, 255, 255, 0.26);
-            border-radius: 5px;
-            transform: scale(1.09);
-            transition: 0.2s;
-        }
-        #fileInput {
-			display: none;
-		}
-
-		#fileLabel {
-			padding: 20px 40px;
-			background-color: #007bff;
-			color: #fff;
-			border: none;
-			border-radius: 10px;
-			cursor: pointer;
-			font-size: 18px;
-			transition: all 0.3s ease;
-			position: relative;
-			overflow: hidden;
-			margin-bottom: 20px;
-		}
-
-		#fileLabel:hover {
-			background-color: #0056b3;
-		}
-
-		#fileLabel:active {
-			background-color: #004080;
-		}
-
-		#fileLabel:before {
-			content: 'Choose HTML File';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			z-index: 1;
-			transition: transform 0.3s ease;
-		}
-
-		#fileLabel:after {
-			content: '';
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 300%;
-			height: 300%;
-			background-color: rgba(255, 255, 255, 0.1);
-			border-radius: 50%;
-			transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-			z-index: 0;
-			transform: translate(-50%, -50%);
-			opacity: 0;
-		}
-
-		#fileInput:focus+#fileLabel:after {
-			width: 0;
-			height: 0;
-			opacity: 1;
-		}
-
-		#fileInfo {
-			color: #fff;
-			margin-bottom: 20px;
-			display: none;
-		}
-
-		#loadButton {
-			padding: 15px 30px;
-			background-color: #28a745;
-			color: #fff;
-			border: none;
-			border-radius: 10px;
-			cursor: pointer;
-			font-size: 18px;
-			transition: all 0.3s ease;
-		}
-
-		#loadButton:hover {
-			background-color: #218838;
-		}
-
-		#loadButton:active {
-			background-color: #1e7e34;
-		}
-		.use {
-			color:#fff;
-			margin-top:2%;
-		}
     </style>
 </head>
 <body>
@@ -253,6 +151,15 @@
         </ul>
     </nav>
    
+    <div class="content">
+        <h1>How to use</h1>
+        <ul>
+            <li>1.) To open a file unblocked click on load</li>
+            <li>2.) ONLY USE HTML FILES (Example: index.html)</li>
+            <li>3.) Next, after opening the file click LOAD</li>
+            <li>4.) Enjoy!</li>
+        </ul>
+
     <div class="background-gradient"></div>
 
     <!-- JavaScript to dynamically generate bubbles -->

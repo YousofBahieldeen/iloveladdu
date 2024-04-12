@@ -138,7 +138,7 @@
             text-align: center;
             border: solid 2px transparent;
             border-radius: 5px;
-            transition: .2s;
+            transition: .5s ease-in-out;
             font-family: 'Poppins', sans-serif;
             cursor: pointer;
             justify-content: center;
@@ -154,7 +154,7 @@
             border: solid 2px rgba(255, 255, 255, 0.26);
             border-radius: 5px;
             transform: scale(1.09);
-            transition: 0.2s;
+            transition: 1s;
         }
         #fileInput {
 			display: none;
@@ -295,7 +295,12 @@
         <button id="loadButton" onclick="loadContent()">Load</button>
         <a href="howtouse.html" class="use">How to use</a>
     </div>
-    
+    <div class="apps">
+        <div class="app" onclick="window.location.href = 'Apps/cal.html'";>
+            <img src="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png" alt="">
+            <h3>Calculator</h3>
+        </div>
+    </div>
     </div>
         <div class="bubbles-container">
             <!-- Generating bubbles dynamically using JavaScript -->
@@ -329,7 +334,6 @@
         // Call the generateBubbles function when the DOM content is loaded
         document.addEventListener('DOMContentLoaded', generateBubbles);
     </script>
-    <script src="Javascript/sign.js"></script>
     <script src="Javascript/fileloader.js"></script>
 </body>
 </html>
