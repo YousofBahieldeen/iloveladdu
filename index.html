@@ -93,6 +93,9 @@
             padding: 20px;
             text-align: center;
         }
+        .content .activeSearch {
+            display: none;
+        }
         .content h2 {
             font-size: 36px;
             margin-bottom: 20px;
@@ -156,6 +159,8 @@
         }
         
         #searchInput {
+            outline: none;
+            color: #fff;
             width: 50vw;
             height: 5vh;
             font-family: 'Poppins', sans-serif;
@@ -168,11 +173,66 @@
             border-color: none;
             border-width: 0;
             border-radius: 3px;
-            padding: 8px;
+            padding: 28px;
+        }
+        button {
+            margin-left: 10px;
+            border: none;
+            border-radius: 3px;
+            background: var(--background-secondary);
+            -webkit-backdrop-filter: var(--background-filter);
+            backdrop-filter: var(--background-filter);
+            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #fff;
+            padding: 10px;
+            height: 5vh;
+            transition: all 0.5s linear;
+        }
+        #search-container button:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+        #searchInput .activeSearch {
+            display: none;
+        }
+        #searchInput:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
         #searchInput:focus {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
+        @keyframes errorShake {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(5px);
+            }
+            50% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        #searchError {
+            color: red;
+            display: none;
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            animation: errorShake 0.5s linear infinite;
+        
+}
     </style>
 </head>
 <body>
@@ -190,8 +250,15 @@
     </div>
 
     <div id="search-container">
-        <input type="search" placeholder="Search..." id="searchInput">
+        <input type="search" placeholder="Search Google or type a URL" id="searchInput">
+        <button onclick="handleSearch(event)">Search</button>
     </div>
+    <div class="messages">
+        <h6 id="searchError"></h6>
+    </div>
+
+    <div id="searchResults"></div>
+
     
     <div class="bubbles-container">
         <!-- Generating bubbles dynamically using JavaScript -->
@@ -224,8 +291,10 @@
             }
         }
 
+
         // Call the generateBubbles function when the DOM content is loaded
         document.addEventListener('DOMContentLoaded', generateBubbles);
     </script>
+    <script src="shared.js" defer></script>
 </body>
 </html>
