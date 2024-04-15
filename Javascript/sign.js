@@ -1,6 +1,6 @@
 let isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
-let savedUsername = "rizza"; // Change this to your initial username
-let savedPassword = "password59"; // Change this to your initial password
+let savedUsername = "Laddu King"; // Change this to your initial username
+let savedPassword = "696996"; // Change this to your initial password
 
 function createPopup() {
   const overlay = document.createElement("div");
